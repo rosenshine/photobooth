@@ -16,7 +16,7 @@ class SingleFrame extends Component {
   componentWillUnmount() {
     clearInterval(this.timerID);
   }
-//small change
+
   countFromFive() {
     let { seconds } = this.state;
     if (this.props.position === 4 && seconds === 1) {
