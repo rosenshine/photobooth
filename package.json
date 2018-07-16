@@ -1,0 +1,23 @@
+{
+  "name": "photbooth",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^1.4.0",
+    "add": "^2.0.6",
+    "animated": "^0.2.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-material-design": "^0.4.3",
+    "react-router-dom": "^4.3.1",
+    "react-router-transition": "^1.2.1",
+    "react-scripts": "1.1.4",
+    "react-transition-group": "^2.4.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
