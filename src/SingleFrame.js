@@ -23,7 +23,13 @@ class SingleFrame extends Component {
       output: this.filePath
     }
 
-    this.camera = new PiCamera({ opts });
+    this.camera = new PiCamera({
+        mode: 'photo',
+        width: 640,
+        height: 480,
+        nopreview: false,
+        output: this.filePath
+      });
 
     this.camera.snap()
       .then((result) => {
