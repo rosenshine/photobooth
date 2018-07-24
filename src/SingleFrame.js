@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import history from "./history";
 import { withRouter } from "react-router-dom";
-import picamera from './pi-camera';
+const picamera = require('pi-camera');
 const homedir = require('os').homedir();
 
 class SingleFrame extends Component {
