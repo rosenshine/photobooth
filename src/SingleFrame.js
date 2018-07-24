@@ -14,7 +14,7 @@ class SingleFrame extends Component {
   componentDidMount() {
     this.timerID = setInterval(() => this.countFromFive(), 1000);
   
-    this.filePath = `${__dirname}/photos/test.jpg`;
+    this.filePath = `${homedir}/photobooth/test.jpg`;
     const opts = {
       mode: 'photo',
       width: 640,
