@@ -13,8 +13,8 @@ class SingleFrame extends Component {
 
   componentDidMount() {
     this.timerID = setInterval(() => this.countFromFive(), 1000);
-  
-    this.filePath = `${homedir}/photobooth/test.jpg`;
+    this.filePath = `${ __dirname }/test.jpg`;
+    console.log(__dirname, 'homedir');
     const opts = {
       mode: 'photo',
       width: 640,
@@ -23,7 +23,7 @@ class SingleFrame extends Component {
       output: this.filePath
     }
 
-    this.camera = new PiCamera({
+    const camera = new PiCamera({
         mode: 'photo',
         width: 640,
         height: 480,
@@ -31,12 +31,13 @@ class SingleFrame extends Component {
         output: this.filePath
       });
 
-    this.camera.snap()
+    camera.snap()
       .then((result) => {
         // Your picture was captured
       })
-      .catch((error) => {
+      .catch((err) => {
         // Handle your error
+        console.log(err);
       });
   }
 
