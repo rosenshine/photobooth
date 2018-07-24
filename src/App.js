@@ -20,7 +20,7 @@ class App extends Component {
             atActive={{ opacity: 1 }}
             className="switch-wrapper"
           > */}
-          <div>
+          <div class="routes-holder">
             <Route exact path="/" component={Home} />
             <Route path="/takephoto/" component={TakePhoto} />
             <Route path="/results/" component={Results} />

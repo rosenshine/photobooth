@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import history from "./history";
 import { withRouter } from "react-router-dom";
+import picamera from './pi-camera';
+const homedir = require('os').homedir();
 
 class SingleFrame extends Component {
   constructor(props) {
@@ -11,6 +13,25 @@ class SingleFrame extends Component {
 
   componentDidMount() {
     this.timerID = setInterval(() => this.countFromFive(), 1000);
+  
+    this.filePath = `${__dirname}/photos/test.jpg`;
+    const opts = {
+      mode: 'photo',
+      width: 640,
+      height: 480,
+      nopreview: false,
+      output: this.filePath
+    }
+
+    this.camera = new picamera({ opts });
+
+    this.camera.snap()
+      .then((result) => {
+        // Your picture was captured
+      })
+      .catch((error) => {
+        // Handle your error
+      });
   }
 
   componentWillUnmount() {
@@ -39,9 +60,11 @@ class SingleFrame extends Component {
       <div className={this.props.className}>
         <p>Frame {this.props.position}</p>
         <h1>{this.state.seconds}</h1>
+        <img src={this.filePath}/>
       </div>
     );
   }
+  
 }
 
 export default withRouter(SingleFrame);
