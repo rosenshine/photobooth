@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import history from "./history";
 import { withRouter } from "react-router-dom";
-const picamera = require('pi-camera');
+const PiCamera = require('pi-camera');
 const homedir = require('os').homedir();
 
 class SingleFrame extends Component {
@@ -23,7 +23,7 @@ class SingleFrame extends Component {
       output: this.filePath
     }
 
-    this.camera = new picamera({ opts });
+    this.camera = new PiCamera({ opts });
 
     this.camera.snap()
       .then((result) => {
