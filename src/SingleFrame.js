@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import history from "./history";
 import { withRouter } from "react-router-dom";
-const PiCamera = require('pi-camera');
 const homedir = require('os').homedir();
 
 class SingleFrame extends Component {
@@ -13,31 +12,42 @@ class SingleFrame extends Component {
 
   componentDidMount() {
     this.timerID = setInterval(() => this.countFromFive(), 1000);
-    this.filePath = `${ __dirname }/test.jpg`;
-    console.log(__dirname, 'homedir');
-    const opts = {
+    // this.filePath = `${ __dirname }/test.jpg`;
+    // console.log(__dirname, 'homedir');
+    // const opts = {
+    //   mode: 'photo',
+    //   width: 640,
+    //   height: 480,
+    //   nopreview: false,
+    //   output: this.filePath
+    // }
+
+    // const camera = new PiCamera({
+    //     mode: 'photo',
+    //     width: 640,
+    //     height: 480,
+    //     nopreview: false,
+    //     output: this.filePath
+    //   });
+
+    // camera.capture('test1.jpg')
+    const PiCamera = require('pi-camera');
+    const myCamera = new PiCamera({
       mode: 'photo',
+      output: `${ __dirname }/test.jpg`,
       width: 640,
       height: 480,
-      nopreview: false,
-      output: this.filePath
-    }
-
-    const camera = new PiCamera({
-        mode: 'photo',
-        width: 640,
-        height: 480,
-        nopreview: false,
-        output: this.filePath
-      });
-
-    camera.snap()
+      nopreview: true,
+    });
+    
+    myCamera.snap()
       .then((result) => {
+        console.log(result);
         // Your picture was captured
       })
-      .catch((err) => {
+      .catch((error) => {
         // Handle your error
-        console.log(err);
+        console.log(error);
       });
   }
 
