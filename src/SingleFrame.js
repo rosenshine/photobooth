@@ -4,6 +4,7 @@ import history from "./history";
 import { withRouter } from "react-router-dom";
 const homedir = require('os').homedir();
 const { StillCamera } = require("pi-camera-connect");
+import * as fs from "fs";
 
 class SingleFrame extends Component {
   constructor(props) {
