@@ -20,6 +20,8 @@ class SingleFrame extends Component {
     stillCamera.takeImage().then(image => {
  
       fs.writeFileSync("still-image.jpg", image);
+    }).catch(err => {
+      console.log(err);
     });
     // this.filePath = `${ __dirname }/test.jpg`;
     // console.log(__dirname, 'homedir');
