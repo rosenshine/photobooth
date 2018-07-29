@@ -6,6 +6,7 @@
     "@material-ui/core": "^1.4.0",
     "add": "^2.0.6",
     "animated": "^0.2.2",
+    "fs": "0.0.1-security",
     "pi-camera": "^1.1.0",
     "pi-camera-connect": "^0.2.0",
     "raspicam": "^0.2.14",
