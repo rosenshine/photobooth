@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import history from "./history";
 import { withRouter } from "react-router-dom";
 const homedir = require('os').homedir();
+const { StillCamera } = require("pi-camera-connect");
 
 class SingleFrame extends Component {
   constructor(props) {
@@ -12,6 +13,13 @@ class SingleFrame extends Component {
 
   componentDidMount() {
     this.timerID = setInterval(() => this.countFromFive(), 1000);
+ 
+    const stillCamera = new StillCamera();
+    
+    stillCamera.takeImage().then(image => {
+ 
+      fs.writeFileSync("still-image.jpg", image);
+    });
     // this.filePath = `${ __dirname }/test.jpg`;
     // console.log(__dirname, 'homedir');
     // const opts = {
@@ -31,24 +39,24 @@ class SingleFrame extends Component {
     //   });
 
     // camera.capture('test1.jpg')
-    const PiCamera = require('pi-camera');
-    const myCamera = new PiCamera({
-      mode: 'photo',
-      output: `${ __dirname }/test.jpg`,
-      width: 640,
-      height: 480,
-      nopreview: true,
-    });
+    // const PiCamera = require('pi-camera');
+    // const myCamera = new PiCamera({
+    //   mode: 'photo',
+    //   output: `${ __dirname }/test.jpg`,
+    //   width: 640,
+    //   height: 480,
+    //   nopreview: true,
+    // });
     
-    myCamera.snap()
-      .then((result) => {
-        console.log(result);
-        // Your picture was captured
-      })
-      .catch((error) => {
-        // Handle your error
-        console.log(error);
-      });
+    // myCamera.snap()
+    //   .then((result) => {
+    //     console.log(result);
+    //     // Your picture was captured
+    //   })
+    //   .catch((error) => {
+    //     // Handle your error
+    //     console.log(error);
+    //   });
   }
 
   componentWillUnmount() {
